@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome to SpaceX Missions Home Page.</h1>
+
+    <h3>Mission Director</h3>
+    <h2>{{director.upper}}</h2>
+
+
+    {% if all_missions %}
+        <h3>Upcoming Missions</h3>
+        <ul>
+        {% for mission in all_missions %}
+            <li>{{mission}}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <h3 style="color:red">There are no upcoming missions. Send Help!</h3>
+    {% endif %}
+    
+    <a class="btn btn-primary" href="/missions/elon/">About Our Glorious Leader (Not Kim Jong Un)</a>
+
+{% endblock %}
+
+
+{% block title%}Missions Page{% endblock %}
