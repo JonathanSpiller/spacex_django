@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
     <h1>My name is Elon Musk.</h1>
 
-    <img src="https://i.imgur.com/4wMbegB.jpeg" alt="" width=200px height=300px>
+    <img src="{% static 'images/elon.png' %}" alt="" width=150px height=300px>
     
     <p>
         <a class="btn btn-success mt-4" href="/missions/home/">

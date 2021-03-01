@@ -1,17 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Mission
 
 def home(request):
 
-    # Pretend this data came from the model and database
-    missions = [
-        "ISS Resupply Mission - 04 March 2021",
-        "Perseverence Driving Test - Mars - 10 March 2021",
-        "Hubble Space Telescope Repairs - LEO - 21 March 2021",
-        "Play with puppies in space",
-        "Get drunk in space",
-        "Play guitar in space"
-    ]
+    missions = Mission.objects.all()
 
     context = {
         'all_missions': missions,

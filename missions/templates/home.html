@@ -11,7 +11,11 @@
         <h3>Upcoming Missions</h3>
         <ul>
         {% for mission in all_missions %}
-            <li>{{mission}}</li>
+            {% if mission.training_mission %}
+            <li class="text-success">{{mission.name}}, {{mission.pilot}}, {{mission.launch_date}}</li>
+            {% else %}
+            <li class="text-danger">{{mission.name}}, {{mission.pilot}}, {{mission.launch_date}}</li>
+            {% endif %}
         {% endfor %}
         </ul>
     {% else %}
