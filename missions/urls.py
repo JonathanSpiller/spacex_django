@@ -4,6 +4,8 @@ from . import views
 #MAPPING BETWEEN ADDRESSES AND FUNCTIONS
 
 urlpatterns = [
-    path('home/', views.home, name='home'),
-    path('elon/', views.elon, name='elon')
+    path('', views.home, name='home'),
+    path('mission/<int:id>', views.mission, name='mission'),
+    path('elon/', views.elon, name='elon'),
+    path('tesla/', views.tesla, name='tesla')
 ]

@@ -9,20 +9,20 @@
 
     {% if all_missions %}
         <h3>Upcoming Missions</h3>
-        <ul>
         {% for mission in all_missions %}
+        <p>
             {% if mission.training_mission %}
-            <li class="text-success">{{mission.name}}, {{mission.pilot}}, {{mission.launch_date}}</li>
+            <a href="{% url 'mission' mission.id %}" class="text-success">{{mission.name}}</a>
             {% else %}
-            <li class="text-danger">{{mission.name}}, {{mission.pilot}}, {{mission.launch_date}}</li>
+            <a href="{% url 'mission' mission.id %}" class="text-danger">{{mission.name}}</a>
             {% endif %}
+        </p>
         {% endfor %}
-        </ul>
     {% else %}
         <h3 style="color:red">There are no upcoming missions. Send Help!</h3>
     {% endif %}
     
-    <a class="btn btn-primary" href="/missions/elon/">About Our Glorious Leader (Not Kim Jong Un)</a>
+    <a class="btn btn-primary" href="{% url 'elon' %}">About Our Glorious Leader (Not Kim Jong Un)</a>
 
 {% endblock %}
 

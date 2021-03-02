@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Mission
+from django.http import Http404
 
 def home(request):
 
@@ -18,3 +19,16 @@ def home(request):
 
 def elon(request):
     return render(request, 'elon.html')
+
+
+def mission(request, id):
+    try:
+        mission = get_object_or_404(Mission, pk=id)
+        return render(request, 'mission_details.html', {'mission': mission})
+    except Http404:
+        return render(request, '404.html')
+        
+
+def tesla(request):
+    return redirect("http://tesla.com")
+
