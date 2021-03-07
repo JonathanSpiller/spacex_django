@@ -1,4 +1,5 @@
 from django import forms
+from .models import Mission, Rocket
 
 def check_old(age):
     if age > 65:
@@ -31,4 +32,13 @@ class AddAstroForm(forms.Form):
     
 
 
+class AddMissionForm(forms.ModelForm):
+    class Meta:      
+        model = Mission
+        fields = '__all__'
 
+
+class AddRocketForm(forms.ModelForm):
+    class Meta:      
+        model = Rocket
+        fields = '__all__'

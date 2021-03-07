@@ -25,7 +25,7 @@ class MedProfile(models.Model):
 
 
 class Mission(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, null=True, blank=True)
     pilot = models.ForeignKey(Astro, on_delete=models.SET_NULL, null=True)
     launch_date = models.CharField(max_length=50, null=True)
     training_mission = models.BooleanField(default=False)
