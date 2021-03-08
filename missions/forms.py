@@ -38,7 +38,10 @@ class AddMissionForm(forms.ModelForm):
         fields = '__all__'
 
 
+
 class AddRocketForm(forms.ModelForm):
     class Meta:      
         model = Rocket
         fields = '__all__'
+
+    

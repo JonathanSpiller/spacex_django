@@ -7,6 +7,9 @@ from .forms import AddAstroForm, AddMissionForm, AddRocketForm
 from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 
+from django.contrib.auth.decorators import login_required
+
+
 def home(request):
 
     missions = Mission.objects.all()
@@ -38,7 +41,7 @@ def mission(request, id):
 def tesla(request):
     return redirect("http://tesla.com")
 
-
+@login_required
 def astronauts(request):
     return render(request, 'astronauts.html', {'astronauts': Astro.objects.all()})
 
@@ -109,3 +112,23 @@ class AddRocket(CreateView):
     form_class = AddRocketForm
     template_name = 'add_rocket.html'
     success_url = reverse_lazy('see-rockets')
+
+
+
+
+
+# EXAMPLE IF WE BUILT LOGIN OURSELVES.
+
+# from django.contrib.auth import authenticate, login
+# def custom_login(request):
+    
+#     username = request.POST.get('username')
+#     password = request.POST.get('password')
+
+#     user = authenticate(username=username, password=password)
+
+#     if user is not None:
+#         login(request, user)
+#         return redirect('home')
+#     else:
+#         return redirect('login')

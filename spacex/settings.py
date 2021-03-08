@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'missions'
+    'accounts',
+    'missions',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -120,4 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'elon'

@@ -14,4 +14,6 @@ urlpatterns = [
     path('see_rockets/', views.AllRockets.as_view(), name='see-rockets'),
     path('rocket_details/<int:pk>', views.RocketDeets.as_view(), name='rocket-details'),
     path('add_rocket/', views.AddRocket.as_view(), name='add-rocket'),
+
+    # path('custom_login', views.custom_login, name='custom-login')  #If we build Login ourselves
 ]
