@@ -1,9 +1,6 @@
 from django import forms
 from .models import Mission, Rocket
 
-def check_old(age):
-    if age > 65:
-        raise forms.ValidationError(f'You are too old to be an astronaut')
         
 def check_young(age):
     if age < 30:
@@ -21,7 +18,7 @@ class AddAstroForm(forms.Form):
     )
     
     age = forms.IntegerField(
-        validators=[check_old, check_young]
+        validators=[check_young]
     )
     rank = forms.CharField(
         required=True,

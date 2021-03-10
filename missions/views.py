@@ -6,6 +6,7 @@ from cprint import cprint
 from .forms import AddAstroForm, AddMissionForm, AddRocketForm
 from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 
@@ -62,6 +63,13 @@ def add_astro(request):
             last_name=myform.cleaned_data['last_name']
             age=myform.cleaned_data['age']
             rank=myform.cleaned_data['rank']
+
+            if age > 60:
+                messages.info(request, 'Your Astronauts are getting old')
+                messages.success(request, 'This is an example of a success message')
+                messages.warning(request, 'This is an example of a warning message')
+                return render(request, 'add_astro.html', {'myform':myform})
+
             
             a1 = Astro(first_name=first_name, last_name=last_name, age=age, rank=rank)
             a1.save()
