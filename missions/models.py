@@ -6,6 +6,7 @@ class Astro(models.Model):
     last_name = models.CharField(max_length=20)
     age = models.IntegerField(default=30)
     rank = models.CharField(max_length=20)
+    likes = models.IntegerField(default=0)
 
     def __repr__(self):
         return f"{self.first_name} {self.last_name}"

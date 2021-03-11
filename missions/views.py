@@ -7,6 +7,7 @@ from .forms import AddAstroForm, AddMissionForm, AddRocketForm
 from django.views.generic import ListView, DetailView, CreateView
 from django.urls import reverse_lazy
 from django.contrib import messages
+import json
 
 from django.contrib.auth.decorators import login_required
 
@@ -46,6 +47,16 @@ def tesla(request):
 def astronauts(request):
     return render(request, 'astronauts.html', {'astronauts': Astro.objects.all()})
 
+def like_astro(request):
+    data = json.loads(request.body)
+    astro = Astro.objects.get(id=data['astro_id'])
+    action = data['action']
+    if action == 'like':
+        astro.likes += 1
+    if action == 'dislike':
+        astro.likes -= 1
+    astro.save()
+    return HttpResponse(json.dumps({'likes': astro.likes}))
 
 # Handled with Regular Forms
 def add_astro(request):
